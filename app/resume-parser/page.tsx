@@ -179,10 +179,28 @@ export default function ResumeParserPage() {
     if (!uploadedFile) return
 
     setIsAnalyzing(true)
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 3000))
-    setAnalysis(mockAnalysis)
-    setIsAnalyzing(false)
+
+    try {
+      const formData = new FormData()
+      formData.append("resume", uploadedFile)
+
+      const res = await fetch("/api/analyze-resume", {
+        method: "POST",
+        body: formData,
+      })
+
+      if (!res.ok) {
+        throw new Error("Failed to analyze resume")
+      }
+
+      const data: ResumeAnalysis = await res.json()
+      setAnalysis(data)
+    } catch (error) {
+      console.error("Error analyzing resume:", error)
+      alert("Something went wrong while analyzing your resume.")
+    } finally {
+      setIsAnalyzing(false)
+    }
   }
 
   const getStatusIcon = (status: string) => {
@@ -312,6 +330,8 @@ export default function ResumeParserPage() {
                     <p className="text-muted-foreground">or click to browse files</p>
                   </div>
                   <input
+                    aria-label="Resume Upload"
+                    title="Resume Upload"
                     type="file"
                     accept=".pdf,.doc,.docx"
                     onChange={handleFileChange}
