@@ -231,6 +231,7 @@ export default function HomePage() {
               desc: "Get personalized internship and job recommendations based on your skills, location, and career goals with AI-powered matching.",
               color: "emerald",
               gradient: "from-emerald-500 to-green-500",
+              href:"/job-matching"
             },
             {
               icon: FileText,
@@ -238,6 +239,7 @@ export default function HomePage() {
               desc: "Upload your resume and get instant feedback with section-wise analysis, ATS optimization, and personalized improvement suggestions.",
               color: "green",
               gradient: "from-green-500 to-teal-500",
+              href:"/resume-parser"
             },
             {
               icon: MessageSquare,
@@ -245,6 +247,7 @@ export default function HomePage() {
               desc: "Practice with our AI interviewer that asks company and role-specific questions to prepare you for real interviews.",
               color: "teal",
               gradient: "from-teal-500 to-blue-500",
+              href:"/interview-practice"
             },
             {
               icon: Users,
@@ -252,6 +255,7 @@ export default function HomePage() {
               desc: "Create a comprehensive profile showcasing your skills, projects, and achievements to stand out to employers.",
               color: "blue",
               gradient: "from-blue-500 to-indigo-500",
+              href:"/profile-builder"
             },
             {
               icon: Target,
@@ -259,6 +263,7 @@ export default function HomePage() {
               desc: "Get personalized recommendations on which roles and companies align with your career aspirations and skills.",
               color: "indigo",
               gradient: "from-indigo-500 to-purple-500",
+              href:"/career-guidance"
             },
             {
               icon: TrendingUp,
@@ -266,8 +271,10 @@ export default function HomePage() {
               desc: "Monitor your application progress, interview performance, and get insights on how to improve your success rate.",
               color: "purple",
               gradient: "from-purple-500 to-pink-500",
+              href:"/success-tracking"
             },
           ].map((feature, index) => (
+            <Link key={index} href={feature.href}>
             <Card
               key={index}
               className="group hover:shadow-2xl transition-all duration-300 border-0 bg-white/80 backdrop-blur-sm hover:scale-105 hover:-translate-y-2 relative overflow-hidden"
@@ -283,6 +290,7 @@ export default function HomePage() {
                 <CardDescription className="text-base text-gray-600 leading-relaxed">{feature.desc}</CardDescription>
               </CardHeader>
             </Card>
+            </Link>
           ))}
         </div>
       </section>
