@@ -189,6 +189,7 @@ export default function OnboardingPage() {
                     <Label htmlFor="fullName">Full Name</Label>
                     <Input
                       id="fullName"
+                      required
                       placeholder="Enter your full name"
                       value={formData.fullName}
                       onChange={(e) => handleInputChange("fullName", e.target.value)}
@@ -198,6 +199,7 @@ export default function OnboardingPage() {
                     <Label htmlFor="location">Current Location</Label>
                     <Input
                       id="location"
+                      required
                       placeholder="City, Country"
                       value={formData.location}
                       onChange={(e) => handleInputChange("location", e.target.value)}
@@ -210,6 +212,7 @@ export default function OnboardingPage() {
                     <Label htmlFor="university">University/College</Label>
                     <Input
                       id="university"
+                      required
                       placeholder="Your institution"
                       value={formData.university}
                       onChange={(e) => handleInputChange("university", e.target.value)}
@@ -229,6 +232,15 @@ export default function OnboardingPage() {
                         ))}
                       </SelectContent>
                     </Select>
+                    <input
+                      type="text"
+                      id="graduationYear"
+                      name="graduationYear"
+                      required // required
+                      className="hidden"
+                      value={formData.graduationYear || ""}
+                      onChange={() => {}} // no-op
+                    />
                   </div>
                 </div>
 
@@ -262,6 +274,15 @@ export default function OnboardingPage() {
                       ))}
                     </SelectContent>
                   </Select>
+                  <input
+                    type="text"
+                    id="targetRole"
+                    name="targetRole"
+                    required // ✅ makes it mandatory
+                    className="hidden"
+                    value={formData.targetRole || ""}
+                    onChange={() => {}} // no-op
+                  />
                 </div>
 
                 <div className="space-y-2">
@@ -302,6 +323,15 @@ export default function OnboardingPage() {
                         <SelectItem value="contract">Contract</SelectItem>
                       </SelectContent>
                     </Select>
+                    <input
+                      type="text"
+                      id="jobType"
+                      name="jobType"
+                      required /* required */
+                      className="hidden"
+                      value={formData.jobType || ""}
+                      onChange={() => {}} // no-op
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="salaryExpectation">Salary Expectation (Optional)</Label>
@@ -332,6 +362,16 @@ export default function OnboardingPage() {
                       <Plus className="w-4 h-4" />
                     </Button>
                   </div>
+                  <input
+                    type="text"
+                    id="skills"
+                    name="skills"
+                    required /* required */
+                    className="hidden"
+                    value={formData.skills.length > 0 ? formData.skills.join(",") : ""}
+                    onChange={() => {}} // no-op
+                  />
+
 
                   {/* Skill Categories */}
                   <div className="space-y-3">
